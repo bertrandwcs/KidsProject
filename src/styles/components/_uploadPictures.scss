@@ -1,0 +1,83 @@
+.container-upload-pictures {
+    .container-form-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 10px;
+        row-gap: 20px;
+        grid-template-areas: 
+        "openfile upload"
+        "prev comment"
+        ;
+
+      }
+      .openfile-button{
+        grid-area: openfile;
+
+      }
+
+      .upload-button{
+          grid-area: upload;
+      }
+    .previsualisation-container-grid {
+        display: grid;
+        grid-template-columns: 150px 8px 150px;
+        color: black;
+        text-align: left;
+        column-gap: 10px;
+        grid-area: prev ;
+    .comment{
+        grid-area: comment;
+    }
+
+        p{
+            box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.5);
+            border-radius:10px;
+            width: 120px;
+            font-size: smaller;
+            padding: 4px;
+            opacity: 0.8;
+            font-style: italic;
+            margin-top:0px;
+            margin-bottom: 0px;
+        }
+    }
+    
+    .input-file{
+        border:none;
+        opacity: 0.5;
+        margin-left: 5px;
+    }
+    .selected-img{
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border:white solid;
+        border-radius: 10px;
+      }
+      .trunk{
+      border-left: 7px solid #79D285;
+      opacity: 0.5;
+      height: 100%; 
+      display: inline-block;
+      margin:auto auto 0px auto;
+      border-radius: 2px;
+      }
+      @media screen and (max-width: 640px) {
+        .container-form-grid{
+            display: grid;
+            column-gap: 10px;
+            grid-template-columns: 95%;
+            row-gap: 20px;
+            grid-template-areas: 
+            "openfile"
+            "upload"
+            "prev"
+            "comment"
+            ;
+    
+          }
+    }
+      
+
+
+}

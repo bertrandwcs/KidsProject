@@ -1,0 +1,179 @@
+.container-kids-tree-page {
+  position: relative;
+
+  .button-add-a-picture{
+    position: absolute;
+    right: 70px;
+    top: 80px;
+  }
+  .button-exit{
+    z-index: 3;
+    position: absolute;
+    right: 32px;
+    bottom: 32px;
+  }
+  .show-upload-pop{
+    position: absolute;
+    height: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.507);
+    animation: popup .3s ease forwards ;
+    transform-origin: center;
+    z-index: 2;
+  }
+  .upload-content{
+    position: relative;
+    top:120px;
+    width: 600px;
+    margin: 0 auto;
+    color: white;
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 10px 10px #333;
+    animation: popup .6s ease forwards;
+    transform: scale(0);
+    transform-origin: center;
+    z-index: 3;
+@keyframes popup {
+      to {
+        transform: scale(1);
+      } 
+    }
+
+  } 
+
+  h1{
+    font-family: $font-1;
+    color: #F50057;
+    text-align: center;
+  }
+
+  height: auto;
+
+    .button-container{
+      margin-bottom: 80px;
+      position:fixed;
+      top:50%;
+      left: 80px;
+      width: 150px;
+      z-index: 1;
+    }
+    .button-style-unselected {
+        padding: 7px 20px;
+        box-shadow: 0px 0px 12px -2px rgba(0,0,0,0.5);
+        border: none;
+        line-height: 1.25;
+        background: #79D285;
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        position: relative;
+        transition: background-color .6s ease;
+        overflow: hidden;
+        margin-right: 5px;
+        margin-bottom: 10px;
+        &:after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          top: 50%;
+          left: 50%;
+          transform-style: flat;
+          transform: translate3d(-50%,-50%,0);
+          background: rgba(white,.1);
+          border-radius: 100%;
+          transition: width .3s ease, height .3s ease;
+        }
+        &:focus,
+        &:hover {
+            background: darken(#94db9d,7%);
+        }
+        &:active {
+          &:after {
+            width: 200px;
+            height: 200px;
+          }
+        }
+      }
+      .button-style-selected {
+        padding: 7px 20px;
+        box-shadow: 0px 0px 12px -2px rgba(0,0,0,0.5);
+        border: none;
+        line-height: 1.25;
+        background: #3F51B5;
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        position: relative;
+        transition: background-color .6s ease;
+        overflow: hidden;
+        margin-right: 5px;
+        margin-bottom: 10px;
+        &:after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          top: 50%;
+          left: 50%;
+          transform-style: flat;
+          transform: translate3d(-50%,-50%,0);
+          background: rgba(white,.1);
+          border-radius: 100%;
+          transition: width .3s ease, height .3s ease;
+        }
+        &:focus,
+        &:hover {
+            background: darken(#3F51B5,7%);
+        }
+        &:active {
+          &:after {
+            width: 200px;
+            height: 200px;
+          }
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .button-container{
+          position:static ;
+          width: 100%;
+          margin-bottom: 30px;
+          text-align: center;
+
+        }
+        .button-add-a-picture{
+          position: static;
+          right: 70px;
+          top: 80px;
+        }
+        .button-add-a-picture{
+          position: static;
+          display: block;
+          width: 170px;
+          margin-bottom: 20px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .upload-content{
+          width: 300px;
+        }
+        .button-exit{
+          z-index: 3;
+          position: absolute;
+          right: 34px;
+          top: 32px;
+          height: 35px;
+        }
+      }
+
+}

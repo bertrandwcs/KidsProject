@@ -1,0 +1,65 @@
+
+.container-kidsdisplay{
+  text-align: center;
+
+      .kids-card{
+            width: 300px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+           /* box-shadow */
+            -webkit-box-shadow: rgba(0,0,0,0.335) 0px 0 10px;
+            -moz-box-shadow: rgba(0,0,0,0.35) 0 0 10px;
+            box-shadow: rgba(0,0,0,0.35) 0 0 10px;
+            margin-bottom: 40px;
+            font-family: $font-1;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+      }
+      .kids-card-girl{
+        padding: 10px;
+        width: 300px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        border-radius: 20px;
+       /* box-shadow */
+        -webkit-box-shadow: rgba(0,0,0,0.335) 0px 0 10px;
+        -moz-box-shadow: rgba(0,0,0,0.35) 0 0 10px;
+        box-shadow: rgba(0,0,0,0.35) 0 0 10px;
+        margin-bottom: 40px;
+        font-family: $font-1;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
+          color: #fda9c7;
+      }
+      .kids-card-boy{
+        padding: 10px;
+        width: 300px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        border-radius: 20px;
+       /* box-shadow */
+        -webkit-box-shadow: rgba(0,0,0,0.335) 0px 0 10px;
+        -moz-box-shadow: rgba(0,0,0,0.35) 0 0 10px;
+        box-shadow: rgba(0,0,0,0.35) 0 0 10px;
+        margin-bottom: 40px;
+        font-family: $font-1;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
+          color: #96D1E3;
+      }
+      @media screen and (max-width: 640px) {
+        .kids-card-boy{
+            width: 120px;
+            margin-bottom: 20px;
+      }
+      .kids-card-girl{
+        width: 120px;
+        margin-bottom: 20px;
+  }
+      }
+    
+    }

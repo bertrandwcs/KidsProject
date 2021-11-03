@@ -1,0 +1,54 @@
+.container-activities {
+    position: relative;
+    height: 1000px;
+    text-align: center;
+    h1 {
+        font-family: $font-1;
+        color: #F50057;
+        text-align: center;
+    
+    }
+    .show-form-pop{
+        position: absolute;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.507);
+        animation: popup .3s ease forwards ;
+        transform-origin: center;
+        z-index: 2;
+      }
+
+      .form-content{
+        position: relative;
+        top:100px;
+        width: 600px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 10px 10px #333;
+        animation: popup .6s ease forwards;
+        transform: scale(0);
+        transform-origin: center;
+        z-index: 3;
+    @keyframes popup {
+          to {
+            transform: scale(1);
+          } 
+        }
+    
+      } 
+
+      @media screen and (max-width: 640px) {
+        .form-content{
+          top:120px;
+          width: 80%;  
+          height: auto;
+        } 
+
+      }
+
+}
