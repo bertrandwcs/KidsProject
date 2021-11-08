@@ -8,6 +8,21 @@
         text-align: center;
     
     }
+
+    .grid-activities {
+      
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      margin:auto;
+      width: 95%;
+      margin-top: 40px;
+    }
+
+    .calendar{
+      height: 300px;
+
+  }
+
     .show-form-pop{
         position: absolute;
         height: 100vh;

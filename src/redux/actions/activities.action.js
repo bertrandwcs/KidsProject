@@ -2,16 +2,16 @@ import firebase from "../../utils/firebaseConfig";
 
 export const GET_ACTIVITIES = "GET_ACTIVITIES";
 export const ADD_ACTIVITIES = "ADD_ACTIVITIES";
-export const DELETE_ACTIVITIES = "DELETE_ACTIVITIES";
+export const DELETE_ACTIVITY = "DELETE_ACTIVITY";
 
-export const getActivities = (selectedKid) => {
-  let data = [];
-  firebase.auth().onAuthStateChanged((user) => {
+export const getActivities = (userUid, kidUid) => {
+  return (dispatch) => {
+    let data = [];
     const activities = firebase
       .database()
-      .ref(`profile/${user.uid}/${selectedKid}/Activities/`);
+      .ref(`profile/${userUid}/${kidUid}/Activities`);
 
-    activities.on("value", (snapshot) => {
+    activities.once("value", (snapshot) => {
       let previousList = snapshot.val();
       let list = [];
       for (let id in previousList) {
@@ -19,37 +19,40 @@ export const getActivities = (selectedKid) => {
       }
       data.push(...list);
     });
-  });
-  return (dispatch) => {
     return dispatch({ type: GET_ACTIVITIES, payload: data });
   };
 };
 
-export const addActivity = (data, firstName) => {
-  firebase.auth().onAuthStateChanged((user) => {
-    const kidsDB = firebase.database().ref(`profile/${user.uid}/${firstName}/`);
-    var newActivityUrl = kidsDB.push().key;
-    const updates = {};
-    updates["/Activities/" + newActivityUrl] = data;
+export const addActivity = (data, userUid, kidUid) => {
+  console.log(userUid);
+  console.log(kidUid);
 
-    kidsDB.update(updates);
-  });
+  const kidsDB = firebase.database().ref(`profile/${userUid}/${kidUid}/`);
+  var newActivityUrl = kidsDB.push().key;
+  const updates = {};
+  updates["/Activities/" + newActivityUrl] = data;
+
+  kidsDB.update(updates);
 
   return (dispatch) => {
-    return dispatch({ type: ADD_ACTIVITIES, payload: data });
+    return dispatch({
+      type: ADD_ACTIVITIES,
+      payload: { id: newActivityUrl, ...data },
+    });
   };
 };
 
-export const deleteActivity = (kid, itemId) => {
-  let data = [];
-  firebase.auth().onAuthStateChanged((user) => {
-    firebase
-      .database()
-      .ref(`profile/${user.uid}/${kid}/Activities`)
-      .child(itemId)
-      .remove();
-  });
+export const deleteActivity = (uid, kidId, itemId) => {
+  firebase
+    .database()
+    .ref(`profile/${uid}/${kidId}/Activities/`)
+    .child(itemId)
+    .remove();
+
   return (dispatch) => {
-    return dispatch({ type: DELETE_ACTIVITIES, payload: data });
+    return dispatch({
+      type: DELETE_ACTIVITY,
+      payload: itemId,
+    });
   };
 };

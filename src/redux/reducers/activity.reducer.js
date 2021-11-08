@@ -1,10 +1,10 @@
-/* import {
+import {
   ADD_ACTIVITIES,
-  DELETE_ACTIVITIES,
   GET_ACTIVITIES,
+  DELETE_ACTIVITY,
 } from "../actions/activities.action";
 
-const initialState = {};
+const initialState = [];
 
 export default function activityReducer(state = initialState, action) {
   switch (action.type) {
@@ -12,10 +12,9 @@ export default function activityReducer(state = initialState, action) {
       return action.payload;
     case ADD_ACTIVITIES:
       return [...state, action.payload];
-
-    case DELETE_ACTIVITIES:
-      return [state, action.payload];
+    case DELETE_ACTIVITY:
+      return state.filter((elem) => elem.id !== action.payload);
     default:
       return state;
   }
-} */
+}

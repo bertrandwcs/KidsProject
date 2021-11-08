@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addKidSelected } from "../redux/actions/kids.action";
 import { isEmpty } from "../utils/isEmpty";

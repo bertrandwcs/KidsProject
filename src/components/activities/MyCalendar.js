@@ -9,25 +9,29 @@ import {
   Appointments,
   TodayButton,
 } from "@devexpress/dx-react-scheduler-material-ui";
+import { isEmpty } from "../../utils/isEmpty";
 
-const MyCalendar = () => {
-  const schedulerData = [
-    {
-      startDate: "2021-10-13T09:45",
-      endDate: "2021-10-17T11:00",
-      title: "WE castor",
-    },
-    {
-      startDate: "2021-10-13T12:00",
-      endDate: "2021-11-04T13:30",
-      title: "Théatre",
-    },
-  ];
+const MyCalendar = ({ items }) => {
+  console.log(items);
+
+  const addSchedule = () => {
+    let activityRange = [];
+    if (!isEmpty(items)) {
+      items.map((elem) => {
+        activityRange.push({
+          startDate: elem.dateRange[0].startDate,
+          endDate: elem.dateRange[0].endDate,
+          title: elem.activity,
+        });
+      });
+    }
+    return activityRange;
+  };
 
   return (
     <div>
-      <Paper>
-        <Scheduler data={schedulerData}>
+      <Paper variant="outlined">
+        <Scheduler data={addSchedule()}>
           <ViewState />
           <MonthView />
           <Toolbar />

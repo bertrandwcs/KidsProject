@@ -1,27 +1,14 @@
 .container-display-activities{
-    padding: 50px;
+    padding: 10px;
     
-
-    .grid-container{
-        display:grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 20px;
-    }
- 
     ul{
         list-style-type: none;
         box-shadow: rgba(0,0,0,0.35) 0 0 10px;
         border-radius: 10px;
-
         margin: auto;
-        margin-bottom: 20px;
         padding: 10px;
     }
-    .container-calendar{
-        height: 400px;
-        width: 800px;
-        overflow: scroll;
-    }
+
     @media screen and (max-width: 640px) {
         text-align: center;
         .grid-container{

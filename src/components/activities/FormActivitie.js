@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { addDays } from "date-fns";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
@@ -8,9 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { isEmpty } from "../../utils/isEmpty";
 import Button from "@material-ui/core/Button";
 import TextField from "@mui/material/TextField";
-import { addActivity } from "../../redux/actions/kids.action";
+import { addActivity } from "../../redux/actions/activities.action";
+import { UidContext } from "../../UidContext";
 
 const FormActivities = () => {
+  const uid = useContext(UidContext);
+
   const dispatch = useDispatch();
 
   const selectedKid = useSelector((state) => state.selectedKidsReducer);
@@ -33,8 +36,7 @@ const FormActivities = () => {
     };
 
     alert("Activity added");
-    dispatch(addActivity(data, selectedKid));
-    /* dispatch(getKids()); */
+    dispatch(addActivity(data, uid, selectedKid));
   };
 
   return (

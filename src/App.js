@@ -38,9 +38,9 @@ function App() {
       setSignedIn(!!user);
       setUid(user.uid);
     });
-  }, []);
+    store.dispatch(getKids(uid));
+  }, [uid]);
 
-  store.dispatch(getKids(uid));
   return (
     <Provider store={store}>
       <UidContext.Provider value={uid}>

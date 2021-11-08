@@ -2,39 +2,37 @@ import { useDispatch, useSelector } from "react-redux";
 import ButtonKids from "../components/ButtonKids";
 import { isEmpty } from "../utils/isEmpty";
 import Button from "@material-ui/core/Button";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UidContext } from "../../src/UidContext";
 import FormActivities from "../components/activities/FormActivitie";
-import DisplayActivities from "../components/activities/DisplayActivities";
-import { getKids } from "../redux/actions/kids.action";
 import { getActivities } from "../redux/actions/activities.action";
+import DisplayActivities from "../components/activities/DisplayActivities";
+import MyCalendar from "../components/activities/MyCalendar";
 
 const ActivitiesPage = () => {
+  const uid = useContext(UidContext);
+
   const selectedKid = useSelector((state) => state.selectedKidsReducer);
-  const kids = useSelector((state) => state.kidsReducer);
   const activities = useSelector((state) => state.activityReducer);
 
   const dispatch = useDispatch();
 
-  const [kidsList, setKidsList] = useState([]);
   const [buttonPop, setButtonPop] = useState(false);
 
   useEffect(() => {
-    let list = [];
-    for (let id in kids) {
-      list.push({ id, ...kids[id] });
-    }
-  }, [selectedKid]);
+    dispatch(getActivities(uid, selectedKid));
+  }, [uid, selectedKid, dispatch]);
 
   const handleButton = () => {
     if (!isEmpty(selectedKid)) {
       setButtonPop(!buttonPop);
     }
-    dispatch(getActivities(selectedKid));
   };
 
   return (
     <div className="container-activities">
       <h1>Activities</h1>
+
       <ButtonKids />
       <Button
         variant="contained"
@@ -44,10 +42,15 @@ const ActivitiesPage = () => {
       >
         New activity
       </Button>
-      {/*       {kidsList.map((elem, index) =>
-        selectedKid ? <DisplayActivities item={elem} /> : null
-      )} */}
-
+      <div className="grid-activities">
+        <div className="calendar">
+          <MyCalendar items={activities} />
+        </div>
+        <div className="activities">
+          {!isEmpty(activities) &&
+            activities.map((elem) => <DisplayActivities item={elem} />)}
+        </div>
+      </div>
       {buttonPop && (
         <div className="show-form-pop">
           <div className="form-content">

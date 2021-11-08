@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import DisplayKids from "../components/DisplayKids";
 import { useDispatch, useSelector } from "react-redux";
 import { isEmpty } from "../utils/isEmpty";
 import { addKid } from "../redux/actions/kids.action";
+import { UidContext } from "../UidContext";
 
 export default function KidsPage() {
   const [firstname, setFirstname] = useState("");
 
+  const uid = useContext(UidContext);
   const kids = useSelector((state) => state.kidsReducer);
   const dispatch = useDispatch();
 
@@ -23,7 +25,7 @@ export default function KidsPage() {
     e.target.reset();
     setFirstname("");
     alert("kids create!");
-    dispatch(addKid(data, firstname));
+    dispatch(addKid(data, firstname, uid));
   };
   const handleChange = (e) => {
     setFirstname(e.target.value);

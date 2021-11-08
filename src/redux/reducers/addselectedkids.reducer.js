@@ -1,6 +1,6 @@
 import { ADD_KID_SELECTED } from "../actions/kids.action";
 
-const initialState = "Gabriel";
+const initialState = "";
 
 export default function selectedKidsReducer(state = initialState, action) {
   switch (action.type) {
